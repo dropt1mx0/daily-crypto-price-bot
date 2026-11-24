@@ -324,7 +324,6 @@ async def answer_market_request(text: str, market: CoinPaprikaClient) -> str | N
             lines.append(f"24ч: {sign}{change:.2f}%")
         local_time = fetched_at.astimezone(ZoneInfo(TIMEZONE_NAME)).strftime("%H:%M")
         lines.append(f"Обновлено: {local_time}")
-        lines.append("Источник: CoinPaprika")
         return "\n".join(lines)
     except MarketDataError as exc:
         return f"Не удалось получить цену: {exc}"
