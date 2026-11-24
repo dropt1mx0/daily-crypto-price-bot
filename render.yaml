@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: daily-crypto-price-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /healthz
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHANNEL_ID
+        sync: false
+      - key: TELEGRAM_ADMIN_USER_IDS
+        sync: false
+      - key: TIMEZONE
+        value: Europe/Kyiv
+      - key: SCHEDULE_MODE
+        value: daily
+      - key: PUBLISH_TIMES
+        value: "23:10"
+      - key: MAX_QUOTE_AGE_SECONDS
+        value: "1800"
